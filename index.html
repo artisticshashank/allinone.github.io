@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>LearnHub — Course Dashboard</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <img src="logo.svg" alt="LearnHub" class="logo" />
+      <h1>LearnHub</h1>
+    </div>
+    <div class="search-area">
+      <input id="search" type="search" placeholder="Search courses, e.g. Python, Math..." />
+    </div>
+    <nav class="actions">
+      <button id="contribute-btn" title="Contribute">➕ Contribute</button>
+      <button id="theme-toggle" title="Toggle theme">🌓</button>
+    </nav>
+  </header>
+
+  <main class="container">
+    <aside class="sidebar">
+      <h2>Categories</h2>
+      <ul id="categories">
+        <li class="cat active" data-cat="all">All</li>
+        <li class="cat" data-cat="programming">Programming</li>
+        <li class="cat" data-cat="math">Math</li>
+        <li class="cat" data-cat="design">Design</li>
+        <li class="cat" data-cat="languages">Languages</li>
+      </ul>
+
+      <div class="download-summary">
+        <h3>Quick Downloads</h3>
+        <ul id="quick-downloads">
+          <!-- filled by script -->
+        </ul>
+      </div>
+    </aside>
+
+    <section class="content">
+      <div class="hero">
+        <h2>Find courses, open materials & download instantly</h2>
+        <p>Choose a course below to view details and available files. All downloadable resources are listed per course.</p>
+      </div>
+
+      <div id="grid" class="grid">
+        <!-- course cards injected here -->
+      </div>
+    </section>
+
+    <aside class="detail" id="detail-pane">
+      <button id="close-detail" class="close">✕</button>
+      <div id="detail-content">
+        <h3 id="detail-title">Select a course</h3>
+        <p id="detail-desc"></p>
+
+        <h4>Files</h4>
+        <ul id="file-list">
+          <!-- file items injected here -->
+        </ul>
+
+        <div class="detail-actions">
+          <button id="download-all" class="primary">Download All as ZIP</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Contribute modal -->
+    <div id="contribute-modal" class="modal" aria-hidden="true">
+      <div class="modal-content">
+        <button id="close-contribute" class="close">✕</button>
+        <h3>Contribute a resource</h3>
+        <form id="contribute-form">
+          <label>
+            Course name
+            <input id="contrib-course" type="text" required placeholder="e.g. OS" />
+          </label>
+          <label>
+            File
+            <input id="contrib-file" type="file" required />
+          </label>
+          <label>
+            Description (optional)
+            <input id="contrib-desc" type="text" placeholder="Short description" />
+          </label>
+          <div style="margin-top:12px;display:flex;gap:8px">
+            <button type="submit" class="primary">Share</button>
+            <button type="button" id="cancel-contribute">Cancel</button>
+          </div>
+        </form>
+        <small style="display:block;margin-top:8px;color:var(--muted)">Files are stored in your browser (IndexedDB) and available on this device/browser only. To share publicly you need a server or a pull request to the repo.</small>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>© <span id="year"></span> LearnHub. Built with ❤️</p>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
